@@ -31,6 +31,7 @@ Measures = "0.3"
 Plots = "1"
 Sockets = "< 0.0.1, 1"
 StatsPlots = "0.15"
+Test = "< 0.0.1, 1"
 URIs = "1"
 julia = "1"
 
