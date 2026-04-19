@@ -1,5 +1,5 @@
 module AWS
-using HTTP, JSON
+using JSON: JSON
 import ..IPSubnet, ..download_to_cache
 
 prefixes_by_region = Dict{String,Vector{IPSubnet}}()
