@@ -1,5 +1,4 @@
 push!(LOAD_PATH, abspath(joinpath(@__DIR__, "..")))
-using Revise
 using WebCacheUtilities, Sockets, Dates, CSV, DataFrames, Printf
 using Plots, Measures, StatsPlots
 
