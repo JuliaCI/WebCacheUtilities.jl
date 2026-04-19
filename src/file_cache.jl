@@ -1,7 +1,7 @@
 using Dates: Dates, TimePeriod
 using URIs: URI
 
-export hit_file_cache, cache_json
+export hit_file_cache
 
 function download_to_cache(filename::String, url::Union{String, URI}; kwargs...)
     file_path = hit_file_cache(filename; kwargs...) do file_path
