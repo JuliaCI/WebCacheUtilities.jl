@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Julia ${{ matrix.version }} - package tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+          - 'lts'
+          - '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: ${{ matrix.version }}
+      - uses: julia-actions/cache@v2
+      - uses: julia-actions/julia-buildpkg@v1
+      - uses: julia-actions/julia-runtest@v1
+
+  aqua:
+    name: Julia ${{ matrix.version }} - Aqua tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+          - '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: ${{ matrix.version }}
+      - uses: julia-actions/cache@v2
+      - name: Run Aqua.jl
+        shell: julia --color=yes {0}
+        run: |
+          import Pkg
+          Pkg.activate(; temp=true)
+          Pkg.develop(Pkg.PackageSpec(path=pwd()))
+          Pkg.add("Aqua")
+          Pkg.instantiate()
+
+          using Aqua
+          using WebCacheUtilities
+
+          Aqua.test_all(WebCacheUtilities; stale_deps=false, deps_compat=false)
