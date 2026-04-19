@@ -1,5 +1,12 @@
 module WebCacheUtilities
-using JSON, HTTP, Sockets
+using AbstractTrees: AbstractTrees, PostOrderDFS
+using CSV: CSV
+using DataFrames: DataFrames, DataFrame
+using Dates: DateTime, Hour, Second, TimePeriod
+using Gumbo: Gumbo, HTMLElement, parsehtml, tag
+using HTTP: HTTP
+using JSON: JSON
+using Sockets: Sockets, IPAddr, IPv4, IPv6
 
 include("file_cache.jl")
 include("IPSubnet.jl")

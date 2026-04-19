@@ -1,4 +1,5 @@
-using Gumbo, AbstractTrees
+using AbstractTrees: AbstractTrees, PostOrderDFS
+using Gumbo: Gumbo, HTMLElement, parsehtml, tag
 
 function for_each_href(f::Function, html_path::AbstractString)
     html = parsehtml(String(read(html_path)))

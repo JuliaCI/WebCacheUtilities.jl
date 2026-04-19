@@ -1,5 +1,5 @@
 module Azure
-using HTTP, JSON, Gumbo, AbstractTrees
+using JSON: JSON
 import ..IPSubnet, ..download_to_cache, ..for_each_href
 
 prefixes_by_region = Dict{String,Vector{IPSubnet}}()

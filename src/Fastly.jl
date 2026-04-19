@@ -1,5 +1,6 @@
 module Fastly
-using HTTP, JSON
+using HTTP: HTTP
+using JSON: JSON
 import ..IPSubnet
 
 export get_mutable_service_version

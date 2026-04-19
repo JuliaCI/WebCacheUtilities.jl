@@ -1,4 +1,5 @@
-using CSV, DataFrames
+using CSV: CSV
+using DataFrames: DataFrames, DataFrame
 
 export parse_csv_source_ips, parse_csv_payload_sizes, parse_csv_http_uri, parse_csv_http_method, parse_csv_http_response_code,
        attribute_data_to_providers, find_provider
