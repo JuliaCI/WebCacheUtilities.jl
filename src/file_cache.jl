@@ -1,7 +1,9 @@
-using Dates
+using Dates: Dates, TimePeriod
+using URIs: URI
+
 export hit_file_cache, cache_json
 
-function download_to_cache(filename::String, url::String; kwargs...)
+function download_to_cache(filename::String, url::Union{String, URI}; kwargs...)
     file_path = hit_file_cache(filename; kwargs...) do file_path
         r = open(io -> HTTP.get(url; response_stream=io), file_path, "w")
         if r.status != 200
