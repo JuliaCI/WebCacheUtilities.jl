@@ -55,8 +55,6 @@ function get_graylog_token(username=nothing, password=nothing; server="graylog.i
     return graylog_session_token[]
 end
 
-#https://97b9064d-6a45-445d-af18-601cee7d2796:session@graylog.e.ip.saba.us/api/search/universal/absolute/export?query=%2A&from=2020-02-01T00%3A00%3A00.000Z&to=2020-03-01T00%3A00%3A00.000Z&fields=source%2Cmessage
-
 function download_graylog_csv(csv_path::AbstractString;
                               auth = get_graylog_token(),
                               time_period::Union{TimePeriod,Tuple{DateTime,DateTime}}=Hour(48),
